@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Livewire\Chat\CreateChat;
+use App\Http\Livewire\Chat\Main;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +20,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => 'auth'],function(){
-    
+    Route::get('/',function(){
+        return view('home');
+    });
+
+    //livewire
+    Route::get('/users',[CreateChat::class,'render'])->name('users');
+    Route::get('/chat(key?)',[Main::class,'render'])->name('chat');
 });
