@@ -1,0 +1,69 @@
+//imports
+@import 'breakpoints';
+
+
+//chatcontainer
+/*-------------------------*/
+.chat_container {
+
+    position: fixed;
+    width: 95%;
+    left: 2.5%;
+    height: 87%;
+    border: 1px solid gray;
+    display:flex;
+    flex-wrap: nowrap;
+
+}
+
+//chatlistcontainer
+/*-------------------------*/
+.chat_list_container {
+
+    border: 1px solid grey;
+    width: 25%;
+    height: 100%;
+
+    .chat_list_header {
+        border: 1px solid grey;
+        height: 60px;
+    }
+
+    .chat_list_body {}
+
+}
+
+//chatboxcontainer
+/*-------------------------*/
+.chat_box_container {
+
+    position:relative;
+    width:75%;
+    height: 100%;
+    border: 1px solid gray;
+
+    .chat_box_header {
+        width:100%;
+        position: absolute;
+        top:0;
+        border: 1px solid grey;
+        height: 60px;
+    }
+
+    .chat_box_body {
+        width:100%;
+        position: absolute;
+        top:60px;
+        border:1px solid blue;
+        overflow-y: auto;
+    }
+
+    .chat_box_footer {
+        height: 60px;
+        width:100%;
+        border:1px solid green;
+        position: absolute;
+        bottom:0;
+
+    }
+}
