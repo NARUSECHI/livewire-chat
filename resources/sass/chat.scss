@@ -9,10 +9,12 @@
     position: fixed;
     width: 95%;
     left: 2.5%;
-    height: 87%;
+    height: 85%;
     border: 1px solid gray;
-    display:flex;
+    border-radius: 11px;
+    display: flex;
     flex-wrap: nowrap;
+    padding: 5px 6px;
 
 }
 
@@ -20,50 +22,138 @@
 /*-------------------------*/
 .chat_list_container {
 
-    border: 1px solid grey;
+    border-right: 1px solid grey;
     width: 25%;
     height: 100%;
+    border-radius: inherit;
 
     .chat_list_header {
-        border: 1px solid grey;
+        border-bottom: 1px solid grey;
         height: 60px;
+        display: flex;
+        flex-wrap: nowrap;
+
+        .title {
+            font-size: 19px;
+            display: flex;
+            padding: 5px 6px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .img_container {
+            margin: auto;
+            margin-right: 2px;
+
+            height: 44px;
+            width: 44px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: 1px solid gray;
+            }
+        }
     }
 
-    .chat_list_body {}
+    .chat_list_body {
+        .chat_list_item {
+            padding: 2px 8px;
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
 
+            .chat_list_img_container {
+                height: 47px;
+                width: 47px;
+                margin: auto;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius:50%;
+                }
+            }
+
+            .chat_list_info {
+                padding: 2px 5px;
+                width: 80%;
+                display: block;
+                //flex-wrap: nowrap;
+
+                .top_row {
+                    margin: 3px 0px;
+                    width: 100%;
+                    display: flex;
+
+                    .list_username {
+                        font-size: 16px;
+                        width: 80%;
+                    }
+
+                    .date {
+                        font-size: 13px;
+                        margin-left: auto;
+                    }
+                }
+
+                .bottom_row {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    width: 100%;
+
+                    .message_body {
+                        width: 80%;
+                        font-weight: lighter;
+                        font-family: 'Roboto';
+                    }
+
+                    .unread_count {
+                        margin-left: auto;
+                        font-size: 13px;
+                        background-color: gainsboro;
+                        padding: 2px 5px;
+                        border-radius: 50%;
+                        color: rgb(190, 40, 40);
+                    }
+                }
+            }
+        }
+    }
 }
 
 //chatboxcontainer
 /*-------------------------*/
 .chat_box_container {
 
-    position:relative;
-    width:75%;
+    position: relative;
+    width: 75%;
     height: 100%;
-    border: 1px solid gray;
 
     .chat_box_header {
-        width:100%;
+        width: 100%;
         position: absolute;
-        top:0;
-        border: 1px solid grey;
+        top: 0;
+        border-bottom: 1px solid grey;
         height: 60px;
     }
 
     .chat_box_body {
-        width:100%;
+        width: 100%;
         position: absolute;
-        top:60px;
-        border:1px solid blue;
+        top: 60px;
+        border: 1px solid blue;
         overflow-y: auto;
     }
 
     .chat_box_footer {
         height: 60px;
-        width:100%;
-        border:1px solid green;
+        width: 100%;
+        border-top: 1px solid green;
         position: absolute;
-        bottom:0;
+        bottom: 0;
 
     }
 }

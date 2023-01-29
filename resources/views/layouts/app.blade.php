@@ -44,8 +44,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+                    <ul class="navbar-nav me-auto ms-2">
+                        <a href="{{ route('chat')}}" class="text-decoration-none text-secondary">Chat</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
