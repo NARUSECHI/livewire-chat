@@ -26,7 +26,7 @@ class CreateChat extends Component
         if(count($checkedConversation)==0){
 
             // new object : make conversation
-            $createdConversation = Conversation::create(['receiver_id' => $receiverId, 'sender_id' => Auth::user()->id, 'last_time_message' => null]);
+            $createdConversation = Conversation::create(['receiver_id' => $receiverId, 'sender_id' => Auth::user()->id]);
 
             // new object : make message
             $createdMessage = Message::create(['conversation_id'=> $createdConversation->id, 'sender_id' =>Auth::user()->id, 'receive_id' => $receiverId, 'body' => $this->message]);

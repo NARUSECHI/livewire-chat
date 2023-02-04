@@ -9,28 +9,33 @@
             <img src="https://picsum.photos/id/237/200/300">
         </div>
     </div>
-
     <div class="chat_list_body">
-        <div class="chat_list_item">
-            <div class="chat_list_img_container">
-                <img src="https://picsum.photos/id/200/200/300">
-            </div>
-            <div class="chat_list_info">
-                <div class="top_row">
-                    <div class="list_username">John</div>
-                    <div class="date">2d</div>
+        @if(count($conversations) > 0)
+            @foreach ($conversations as $conversation)
+            <div class="chat_list_item">
+                <div class="chat_list_img_container">
+                    <img src="https://picsum.photos/id/{{ $this->getChatUserInstance($conversation, $name = 'id') }}/200/300">
                 </div>
-
-                <div class="bottom_row">
-                    <div class="message_body text-truncate">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima ex nam ab repellendus tempora nemo itaque eaque, at unde dolorum ea. Asperiores aliquid est, quis sit quia quod sequi tempore!
+                <div class="chat_list_info">
+                    <div class="top_row">
+                        <div class="list_username">{{ $this->getChatUserInstance($conversation, $name = 'name') }}</div>
+                        <div class="date">{{ $conversation->messages->last()->created_at->shortAbsoluteDiffForHumans() }}</div>
                     </div>
-                    <div class="unread_count">
-                        56
+    
+                    <div class="bottom_row">
+                        <div class="message_body text-truncate">
+                            {{ $conversation->messages->last()->body }}
+                        </div>
+                        <div class="unread_count">
+                            56
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            @endforeach
+        @else
+            You have no conversations.
+        @endif
     </div>    
     
 </div>

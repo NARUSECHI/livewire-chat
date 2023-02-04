@@ -27,6 +27,6 @@ Route::group(['middleware' => 'auth'],function(){
     //livewire
     Route::get('/users',CreateChat::class)->name('users');
 
-    Route::get('/chat{key?}',[Main::class,'render'])->name('chat');
+    Route::get('/chat{key?}',Main::class)->name('chat');
 
 });
