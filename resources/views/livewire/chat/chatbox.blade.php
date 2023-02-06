@@ -1,15 +1,16 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    @if($selectedConversation)
     <div class="chat_box_header">
         <div class="return">
             <i class="bi bi-arrow-left"></i>
         </div>
         <div class="img_container">
-            <img src="https://picsum.photos/id/231/200/300" alt="">
+            <img src="https://picsum.photos/id/{{ $receiverInstance ->id }}/200/300" alt="">
         </div>
 
         <div class="name">
-            john
+            {{ $receiverInstance->name }}
         </div>
         <div class="info">
             <div class="info_item">
@@ -25,41 +26,38 @@
         </div>
     </div>
     <div class="chat_box_body">
-        <div class="msg_body msg_body_receiver">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sequi nam velit ea sed odio molestias possimus ad praesentium. Repudiandae quo inventore tenetur sed odit porro iure harum! Sint, expedita.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi velit explicabo obcaecati sed sit, facere distinctio ea quos quis, itaque voluptates excepturi, ex reprehenderit quas sapiente aliquid. Tempora, sequi suscipit.
-            <div class="msg_body_footer">
-                <div class="date">
-                    5 hours ago
+        @foreach ($messages as $message)
+            @if ($message->sender_id == Auth::user()->id)
+                <div class="msg_body msg_body_me">
+                    {{$message->body}}
+                    <div class="msg_body_footer">
+                        <div class="date">
+                            {{$message->created_at->format('m: i a')}}
+                        </div>
+                        <div class="read">
+                            <i class="bi bi-check"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="read">
-                    <i class="bi bi-check"></i>
+            @else
+                <div class="msg_body msg_body_receiver">
+                    {{$message->body}}
+                    <div class="msg_body_footer">
+                        <div class="date">
+                            {{$message->created_at->shortAbsoluteDiffForHumans()}}
+                        </div>
+                        <div class="read">
+                            <i class="bi bi-check"></i>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="msg_body msg_body_me">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sequi nam velit ea sed odio molestias possimus ad praesentium. Repudiandae quo inventore tenetur sed odit porro iure harum! Sint, expedita.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi velit explicabo obcaecati sed sit, facere distinctio ea quos quis, itaque voluptates excepturi, ex reprehenderit quas sapiente aliquid. Tempora, sequi suscipit.
-            <div class="msg_body_footer">
-                <div class="date">
-                    5 hours ago
-                </div>
-                <div class="read">
-                    <i class="bi bi-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="msg_body msg_body_me">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sequi nam velit ea sed odio molestias possimus ad praesentium. Repudiandae quo inventore tenetur sed odit porro iure harum! Sint, expedita.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi velit explicabo obcaecati sed sit, facere distinctio ea quos quis, itaque voluptates excepturi, ex reprehenderit quas sapiente aliquid. Tempora, sequi suscipit.
-            <div class="msg_body_footer">
-                <div class="date">
-                    5 hours ago
-                </div>
-                <div class="read">
-                    <i class="bi bi-check"></i>
-                </div>
-            </div>
-        </div>
+            @endif
+            
+        @endforeach
     </div>
+    @else
+    <div class="fs-4 text-center text-primary mt-4">
+        No conversation selected
+    </div>
+    @endif
 </div>

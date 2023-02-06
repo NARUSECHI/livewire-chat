@@ -21,9 +21,10 @@ class ChatList extends Component
     // Prepare which conversation I will start
     public function chatUserSelected(Conversation $conversation, $receiverId)
     {
-        dd($conversation, $receiverId);
+        //dd($conversation, $receiverId);
         $this->selectedConversation = $conversation;
         $recerverInstance = User::find($receiverId);
+        $this->emitTo('chat.chatbox','loadConversation',$this->selectedConversation,$recerverInstance);
     }
 
     // Identify whether counterpart is conversation receiver or sender 
