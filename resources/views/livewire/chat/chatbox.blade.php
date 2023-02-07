@@ -6,7 +6,7 @@
             <i class="bi bi-arrow-left"></i>
         </div>
         <div class="img_container">
-            <img src="https://picsum.photos/id/{{ $receiverInstance ->id }}/200/300" alt="">
+            <img src="https://ui-avatars.com/api/?name={{ $receiverInstance->name }}">
         </div>
 
         <div class="name">

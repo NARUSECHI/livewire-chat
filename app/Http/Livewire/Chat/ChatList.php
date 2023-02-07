@@ -23,8 +23,9 @@ class ChatList extends Component
     {
         //dd($conversation, $receiverId);
         $this->selectedConversation = $conversation;
-        $recerverInstance = User::find($receiverId);
-        $this->emitTo('chat.chatbox','loadConversation',$this->selectedConversation,$recerverInstance);
+        $this->receiverInstance = User::find($receiverId);
+        $this->emitTo('chat.chatbox','loadConversation',$this->selectedConversation,$this->receiverInstance);
+        $this->emitTo('chat.message','updateSendMessage',$this->selectedConversation,$this->receiverInstance);
     }
 
     // Identify whether counterpart is conversation receiver or sender 
