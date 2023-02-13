@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Chat;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Conversation;
-// use App\Models\Message; //どうやつてモデルとコントローラー同じ名前で通すか
+use App\Models\Message as Mes;
 use Illuminate\Support\Facades\Auth;
 
 class Message extends Component
@@ -13,6 +13,7 @@ class Message extends Component
     public $selectedConversation;
     public $receiverInstance;
     public $body;
+
     
     protected $listeners = ['updateSendMessage'];
     public function updateSendMessage(Conversation $conversation,User $receiver)
@@ -28,10 +29,12 @@ class Message extends Component
         if($this->body == null){
             return null;
         }
-        //どうやって上のメゾットで定義したものを流用できるのか？
-        $createdMessage = Message::create(['conversation_id'=>$this->selectedConversation->id,'sender_id'=>Auth::user()->id,'receiver_id'=> $this->receiverInstance->id,'body'=>$this->body]);
+
+        $createdMessage = Mes::create(['conversation_id'=>$this->selectedConversation->id,'sender_id'=>Auth::user()->id,'receive_id'=> $this->receiverInstance->id,'body'=>$this->body]);
         $this->selectedConversation->last_time_message = $createdMessage->created_at;
-        $this->$createdMessage->save();
+        $createdMessage->save();
+
+
     }
 
     public function render()
