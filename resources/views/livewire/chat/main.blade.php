@@ -18,6 +18,8 @@
                 $('.chat_list_container').hide();
                 $('.chat_box_container').show();
             }
+
+            $('.chat_box_body').scrollTop($('.chat_box_body')[0].scrollHeight);     
         });
 
         //Search jQuery

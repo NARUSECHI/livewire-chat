@@ -28,7 +28,7 @@
     <div class="chat_box_body">
         @foreach ($messages as $message)
             @if ($message->sender_id == Auth::user()->id)
-                <div class="msg_body msg_body_me">
+                <div wire:key="{{$message->id}}" class="msg_body msg_body_me">
                     {{$message->body}}
                     <div class="msg_body_footer">
                         <div class="date">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             @else
-                <div class="msg_body msg_body_receiver">
+                <div wire:key="{{$message->id}}" class="msg_body msg_body_receiver">
                     {{$message->body}}
                     <div class="msg_body_footer">
                         <div class="date">
