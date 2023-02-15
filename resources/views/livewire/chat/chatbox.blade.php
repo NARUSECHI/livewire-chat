@@ -52,12 +52,38 @@
                     </div>
                 </div>
             @endif
-            
         @endforeach
+        <script>
+            $('.chat_box_body').on('scroll', function(){
+                //scrollTop() => current position
+                var top = $('.chat_box_body').scrollTop();
+                if(top==0){
+                    window.livewire.emit('loadmore');
+                }            
+            });
+        </script>
+
+        <script>
+            window.addEventListener('updatedHeight',event=>{
+                // detail => return value 
+                let old = event.detail.height;
+                let newHeight = $('.chat_box_body')[0].scrollHeight;
+                let height = $('.chat_box_body').scrollTop(newHeight - old);
+                window.livewire.emit('updateHeight',{
+                    height:height,
+                });
+            })
+        </script>
     </div>
     @else
     <div class="fs-4 text-center text-primary mt-4">
         No conversation selected
     </div>
     @endif
+
+    <script>
+        window.addEventListener('rowChatToBottom', event =>{
+            $('.chat_box_body').scrollTop($('.chat_box_body')[0].scrollHeight);
+        });
+    </script>
 </div>

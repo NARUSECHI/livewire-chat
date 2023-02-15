@@ -19,7 +19,11 @@
                 $('.chat_box_container').show();
             }
 
-            $('.chat_box_body').scrollTop($('.chat_box_body')[0].scrollHeight);     
+            $('.chat_box_body').scrollTop($('.chat_box_body')[0].scrollHeight);    
+            let height = $('.chat_box_body')[0].scrollHeight;
+            window.livewire.emit('updateHeight',{
+                height:height,
+            });
         });
 
         //Search jQuery
