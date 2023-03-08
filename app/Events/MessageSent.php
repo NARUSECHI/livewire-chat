@@ -14,7 +14,7 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Conversation;
 
-class MessageSent implements shouldBroadcast
+class MessageSent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
